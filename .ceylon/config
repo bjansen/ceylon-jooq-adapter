@@ -1,0 +1,12 @@
+
+[compiler]
+source=source
+resource=resource
+
+[repositories]
+remote=aether
+
+[defaults]
+encoding=UTF-8
+autoexportmavendependencies=true
+flatclasspath=false
