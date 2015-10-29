@@ -4,7 +4,8 @@ import org.jooq {
 import java.lang {
     JString = String,
     JInteger = Integer,
-    Class
+    Class,
+    JByte=Byte
 }
 import ceylon.interop.java {
     javaClass,
@@ -46,4 +47,20 @@ shared class DateTimeConverter() satisfies Converter<Timestamp, DateTime> {
     shared actual Timestamp? to(DateTime? u) => if (exists u) then Timestamp(u.instant().millisecondsOfEpoch) else null;
     
     shared actual Class<DateTime> toType() => javaClass<DateTime>();
+}
+
+shared class BooleanConverter() satisfies Converter<JByte, Boolean> {
+    Boolean parse(JByte b) {
+        return if (b == 0) then false else true;
+    }
+
+    shared actual Boolean? from(JByte? t) => if (exists t) then parse(t) else null;
+    
+    shared actual Class<JByte> fromType() => javaClass<JByte>();
+    
+    shared actual JByte? to(Boolean? u) => if (exists u)
+                                           then if (u) then JByte(Byte(1)) else JByte(Byte(0))
+                                           else null;
+    
+    shared actual Class<Boolean> toType() => javaClass<Boolean>();
 }
