@@ -66,7 +66,7 @@ shared class DateTimeConverter() satisfies Converter<Timestamp,DateTime> {
 
 shared class BooleanConverter() satisfies Converter<JByte,Boolean> {
     Boolean parse(JByte b) {
-        return if (b == 0) then false else true;
+        return if (b.intValue() == 0) then false else true;
     }
     
     shared actual Boolean? from(JByte? t) => if (exists t) then parse(t) else null;
