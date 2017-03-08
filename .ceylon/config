@@ -10,3 +10,5 @@ remote=aether
 encoding=UTF-8
 autoexportmavendependencies=true
 flatclasspath=false
+offline=false
+fullyexportmavendependencies=false
